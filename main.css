@@ -3,5 +3,16 @@
 padding: 10.5rem 1rem;
 font-size: 8rem;
 border-radius: 1.3rem;
-margin-block: 30vh;
+color: white;
+
+margin-block: 20vh;
+}
+
+.btn-group-lg>.btn, .btn-lg,#accueil2
+{
+padding: 10.5rem 1rem;
+font-size: 8rem;
+border-radius: 1.3rem;
+color: red;
+margin-block: 20vh;
 }
