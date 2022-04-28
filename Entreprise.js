@@ -7,7 +7,13 @@ async function getEntreprise() {
       const response = await axios.get('https://entreprise.vinko-roditi.com/api/entreprise/list');
       return response.data;
     } catch (error) {
-      alert(error);
+      if(error.response) {
+        CreateToast(error.response);
+      } else if(error.request) {
+        CreateToast(error.request);
+      } else {
+        CreateToast(error.config);
+      }
     }
 }
 
@@ -73,4 +79,36 @@ function CreateEntreprise(value) {
     return div0;
 }
 
-export { CreateEntreprise, dataEntreprise };
+function CreateToast (error) {
+
+    let div1 = document.createElement("div");
+    div1.className = "toast";
+    div1.setAttribute("role", "alert");
+    div1.setAttribute("aria-live", "assertive");
+    div1.setAttribute("aria-atomic", "true");
+
+    let div2 = document.createElement("div");
+    div2.className = "toast-header";
+
+    let h5 = document.createElement("h5");
+    h5.className = "me-auto fw-bold";
+    h5.textContent= "Error!"
+    div2.appendChild(h5);
+
+    let button = document.createElement("button");
+    button.className = "btn-close";
+    button.setAttribute("type", "button");
+    button.setAttribute("data-bs-dismiss", "toast");
+    button.setAttribute("aria-label", "close");
+    div2.appendChild(button);
+    div1.appendChild(div2);
+
+    let div3 = document.createElement("div");
+    div3.className = "toast-body";
+    div3.textContent = error;
+    div1.appendChild(div3);
+
+    return div1;
+}
+
+export { CreateEntreprise, dataEntreprise, CreateToast };

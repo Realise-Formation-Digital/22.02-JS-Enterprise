@@ -1,7 +1,8 @@
-import { CreateEntreprise, dataEntreprise } from "./Entreprise.js";
+import { CreateEntreprise, dataEntreprise, CreateToast } from "./Entreprise.js";
 import { CreatePersonne, dataPersonne } from "./Personne.js";
 import { CreateVille, dataVille } from "./Ville.js";
 
+//window.appendChild(CreateToast());
 
 //lien avec html pour le display des cards.
 const div1 = document.querySelector("#displayEntreprise");
@@ -25,9 +26,7 @@ for (let value of dataPersonne){
 let modal = document.getElementById("modalButton");
 console.log(modalButton);
 
-/**
- * addEventListener pour chaque button dans les card, prend les info du button au click pour faire un modal avec avec lo nom puis la map.
- */
+//addEventListener pour chaque button dans les card, prend les info du button au click pour faire un modal avec avec lo nom puis la map.
 modal.addEventListener("show.bs.modal", (e) => {
     let buttons = e.relatedTarget;
     console.log(buttons);
