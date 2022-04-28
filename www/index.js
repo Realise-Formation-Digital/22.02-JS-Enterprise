@@ -258,5 +258,19 @@ modal.addEventListener("show.bs.modal", (e) => {
         const id = dataVille.find(element => element.id == idButton)
         console.log(id);
         modaltitle.textContent = id.nom;
-    }  
+    }
 })
+
+    
+
+if
+    var map = L.map('map').setView([-58.37723000, -34.61315000], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([-57, -33]).addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
+    
