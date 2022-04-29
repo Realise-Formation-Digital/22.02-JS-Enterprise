@@ -4,15 +4,38 @@
  */
 async function getPersonne() {
     try {
-      const response = await axios.get('https://entreprise.vinko-roditi.com/api/personne/list');
-      return response.data;
+      const response = await axios.get('https://entreprise.vinko-roditi.com/api/personne/list', { timeout: 60 });
+      return response;
     } catch (error) {
-      alert(error);
+        if (error.code === "ECONNABORTED") {
+            return error.message
+        } else if (error.dueToNoInternetConnection) {
+            return error = "No Connection";
+        } else {
+            return error.message;
+        }
     }
 }
 
-//array avec toutes les personne
-const dataPersonne = await getPersonne();
+//toutes les donnee de la requete
+const reponseAxios = await getPersonne();
+
+/**
+ * 
+ * @returns liste de personnes, check le status 200
+ */
+function check () {
+    if (reponseAxios.status == 200) {
+        const data = reponseAxios.data;
+        return data;
+    }
+}
+
+//liste de personnes
+const dataPersonne = check();
+
+//error de axios
+const errorPersonne = reponseAxios;
 
 /**
  * 
@@ -85,4 +108,4 @@ function CreatePersonne(value) {
     return div0;
 }
 
-export { CreatePersonne, dataPersonne };
+export { CreatePersonne, dataPersonne, errorPersonne };

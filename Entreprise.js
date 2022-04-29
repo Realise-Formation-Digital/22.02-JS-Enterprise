@@ -4,21 +4,39 @@
  */
 async function getEntreprise() {
     try {
-      const response = await axios.get('https://entreprise.vinko-roditi.com/api/entreprise/list');
-      return response.data;
+        const response = await axios.get('https://entreprise.vinko-roditi.com/api/entreprise/list', { timeout: 60 });
+        return response;
     } catch (error) {
-      if(error.response) {
-        CreateToast(error.response);
-      } else if(error.request) {
-        CreateToast(error.request);
-      } else {
-        CreateToast(error.config);
-      }
+        if (error.code === "ECONNABORTED") {
+            return error.message
+        } else if (error.dueToNoInternetConnection) {
+            return error = "No Connection";
+        } else {
+            return error.message;
+        }
     }
 }
 
-//array avec toutes les entreprise;
-const dataEntreprise = await getEntreprise();
+//toutes les donnee de la requete
+const reponseAxios = await getEntreprise();
+
+/**
+ * 
+ * @returns liste d'entreprise, check le status 200
+ */
+function check () {
+    if (reponseAxios.status == 200) {
+        const data = reponseAxios.data;
+        console.log(data)
+        return data;
+    }
+}
+
+//liste d'entreprise
+const dataEntreprise = check();
+
+//error de axios
+const errorEntreprise = reponseAxios;
 
 /**
  * 
@@ -79,36 +97,4 @@ function CreateEntreprise(value) {
     return div0;
 }
 
-function CreateToast (error) {
-
-    let div1 = document.createElement("div");
-    div1.className = "toast";
-    div1.setAttribute("role", "alert");
-    div1.setAttribute("aria-live", "assertive");
-    div1.setAttribute("aria-atomic", "true");
-
-    let div2 = document.createElement("div");
-    div2.className = "toast-header";
-
-    let h5 = document.createElement("h5");
-    h5.className = "me-auto fw-bold";
-    h5.textContent= "Error!"
-    div2.appendChild(h5);
-
-    let button = document.createElement("button");
-    button.className = "btn-close";
-    button.setAttribute("type", "button");
-    button.setAttribute("data-bs-dismiss", "toast");
-    button.setAttribute("aria-label", "close");
-    div2.appendChild(button);
-    div1.appendChild(div2);
-
-    let div3 = document.createElement("div");
-    div3.className = "toast-body";
-    div3.textContent = error;
-    div1.appendChild(div3);
-
-    return div1;
-}
-
-export { CreateEntreprise, dataEntreprise, CreateToast };
+export { CreateEntreprise, dataEntreprise, errorEntreprise };

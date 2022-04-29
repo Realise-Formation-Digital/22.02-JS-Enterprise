@@ -4,15 +4,38 @@
  */
 async function getVille() {
     try {
-      const response = await axios.get('https://entreprise.vinko-roditi.com/api/ville/list');
-      return response.data;
+      const response = await axios.get('https://entreprise.vinko-roditi.com/api/ville/list', { timeout: 60 });
+      return response;
     } catch (error) {
-      alert(error);
+        console.log(error);
+        if (error.code === "ECONNABORTED") {
+            return error.message
+        } else if (error.dueToNoInternetConnection) {
+            return error = "No Connection";
+        } else {
+            return error.message;
+        }
     }
 }
 
-//array avec toutes les ville
-const dataVille = await getVille();
+//toutes les donnee de la requete
+const reponseAxios = await getVille();
+
+/**
+ * 
+ * @returns liste de villes, check le status 200
+ */
+function check () {
+    if (reponseAxios.status == 200) {
+        const data = reponseAxios.data;
+        return data;
+    }
+}
+
+//liste de villes
+const dataVille = check();
+//error de axios
+const errorVille = reponseAxios;
 
 /**
  * 
@@ -84,4 +107,4 @@ function CreateVille(value) {
     return div0;
 }
 
-export { CreateVille, dataVille };
+export { CreateVille, dataVille, errorVille };

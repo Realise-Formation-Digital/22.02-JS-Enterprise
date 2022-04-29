@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Ajouter</title>
+</head>
+<body class="container">
+
+    <div class="row justify-content-between mt-3">
+        <div class="col-4 d-flex justify-content-center">
+            <button id="bPerson" class="btn btn-info bnt-lg">Ajouter Personne</button>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+            <button id="bEnterprise" class="btn btn-info bnt-lg">Ajouter Entreprise</button>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+            <button id="bCity" class="btn btn-info bnt-lg">Ajouter Ville</button>
+        </div>
+    </div>
+
+    <div id="newPerson" class="card justify-content-center mt-3 d-none">
+        <div class="card-body">
+            <div class="card-header text-center">
+                <h3>Nouvelle Personne</h3>
+            </div>
+            <form class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="nomPersonne" class="form-label">Nom</label>
+                  <input type="text" class="form-control" id="nomPersonne" required>
+                </div>
+                <div class="mb-3">
+                  <label for="emailPersonne" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="emailPersonne" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telephonePeronne" class="form-label">Telephone</label>
+                    <input type="tel" class="form-control" id="telephonePeronne" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="profilePersonne" class="form-label">Profile</label>
+                    <input type="url" class="form-control" id="profilePersonne">
+                </div>
+                <div class="mb-3">
+                    <label for="villePersonne" class="form-label">ville ID</label>
+                    <input type="number" class="form-control" id="villePersonne" pattern="[0-9]{1}" required>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button id="subPerson" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <p id="infoPersonne" class="fw-bold text-danger"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="newEnterprise" class="card justify-content-center mt-3 d-none">
+        <div class="card-body">
+            <div class="card-header text-center">
+                <h3>Nouvelle Entreprise</h3>
+            </div>
+            <form class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="nomEntreprise" class="form-label">Nom</label>
+                  <input type="text" class="form-control" id="nomEntreprise" required>
+                </div>
+                <div class="mb-3">
+                  <label for="websiteEntreprise" class="form-label">Website</label>
+                  <input type="url" class="form-control" id="websiteEntreprise" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telephoneEntreprise" class="form-label">Telephone</label>
+                    <input type="tel" class="form-control" id="telephoneEntreprise" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button id="subEnterprise" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="newCity" class="card justify-content-center mt-3 d-none">
+        <div class="card-body">
+            <div class="card-header text-center">
+                <h3>Nouvelle Ville</h3>
+            </div>
+            <form class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="nomVille" class="form-label">Nom</label>
+                  <input type="text" class="form-control" id="nomVille" required>
+                </div>
+                <div class="mb-3">
+                  <label for="lattitudeVille" class="form-label">Lattitude</label>
+                  <input type="number" class="form-control" id="lattitudeVille" required>
+                </div>
+                <div class="mb-3">
+                    <label for="longitudePeronne" class="form-label">Longitude</label>
+                    <input type="number" class="form-control" id="longitudePeronne" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="paysVille" class="form-label">Pays</label>
+                    <input type="text" class="form-control" id="paysVille" required>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button id="subVille" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="PostAdd.js" type="module"></script>
+</body>
+</html>
