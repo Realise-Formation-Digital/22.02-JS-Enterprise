@@ -8,11 +8,9 @@ const div1 = document.querySelector("#displayEntreprise");
 const div2 = document.querySelector("#displayPersonne");
 const div3 = document.querySelector("#displayVille");
 
-var map = L.map('map').setView([-34.61315000, -58.37723000], 13);
+
     
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+
 
 //boucle pour chaque entreprise, personne, ville et genere une card pour chaque avec les information
 for (let value of dataEntreprise){
@@ -49,53 +47,83 @@ modal.addEventListener("show.bs.modal", (e) => {
     let arrayButton = buttons.getAttribute("data-bs-array");
     console.log(arrayButton);
 
-    let modaltitle = modal.querySelector("#title");
-    //let modalbody = modal.querySelector(".modal-body");
+    // let modaltitle = modal.querySelector("#title");
+    // let modalbody = modal.querySelector(".modal-body");
+    
 
     if(arrayButton == "dataEntreprise") {
         const id = dataEntreprise.find(element => element.id == idButton)
         console.log(id);
-        // modaltitle.textContent = id.nom;
-        setTimeout(function() {
-            map.invalidateSize();
-        }, 500);
-    
-        if(idButton == 3)
-        L.marker([-34.61315000, -58.37723000]).addTo(map)
-            .bindPopup('Buenos Aires')
-
-        else if(idButton == 2){
-            L.marker([-34.61315000, -58.37723000]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        }
-        else if(idButton == 1){
-            L.marker([-34.61315000, -58.37723000]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        }
-        else if(idButton == 4){
-            L.marker([-34.61315000, -58.37723000]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        }
         
-    } else if (arrayButton == "dataPersonne") {
+        // modaltitle.textContent = id.nom;
+    }
+        
+        else if (arrayButton == "dataPersonne") {
         const id = dataPersonne.find(element => element.id == idButton)
         console.log(id);
-        modaltitle.textContent = id.nom;
+        // modaltitle.textContent = id.nom;
 
-        setTimeout(function() {
-            map.invalidateSize();
-        }, 500);
-    
-    
-        L.marker([-34.61315000, -58.37723000]).addTo(map)
-            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     } else {
         const id = dataVille.find(element => element.id == idButton)
         console.log(id);
-        modaltitle.textContent = id.nom;
-    }
 
-    
+        if(id.nom == "Buenos Aires"){
+            setTimeout(function(){
+                map.invalidateSize();
+            }, 500);
+            
+            var map = L.map('map').setView([-34.61315000, -58.37723000], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([-34.61315000, -58.37723000]).addTo(map)
+            .bindPopup('Buenos Aires')
+            .openPopup();
+        // modaltitle.textContent = id.nom;
+        }
+        if(id.nom == "Lausanne"){
+            setTimeout(function(){
+                map1.invalidateSize();
+            }, 500);
+            
+            var map1 = L.map('map1').setView([46.51965350, 6.63227340], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map1);
+            L.marker([46.51965350, 6.63227340]).addTo(map1)
+            .bindPopup('Lausanne')
+            .openPopup();
+        // modaltitle.textContent = id.nom;
+        }
+        
+
+        // if(id == "3"){
+        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        //     }).addTo(map);
+
+        // var map = L.map('map').setView([-34.61315000, -58.37723000]);
+        // L.marker([-34.61315000, -58.37723000]).addTo(map)
+        //     .bindPopup('Buenos Aires')
+        // }
+
+        // else if(id == "2"){
+        //     var map1 = L.map('map').setView([46.51965350,6.63227340], 13);
+        //     L.marker([46.51965350,6.63227340]).addTo(map1)
+        //         .bindPopup('Genève')
+        // }
+        // else if(id == "1"){
+        //     var map2 = L.map('map').setView([46.20700000,6.14234000], 13);
+        //     L.marker([46.20700000,6.14234000]).addTo(map2)
+        //         .bindPopup('Lausanne')
+        // }
+        // else if(id == "4"){
+        //     var map3 = L.map('map').setView([-33.30851000,-70.11405900], 13);
+        //     L.marker([-33.30851000,-70.11405900]).addTo(map3)
+        //         .bindPopup('Santiago de Chile')
+        // }
+    }
+}  )
 
     // if(idButton == 3){
     //     var map = L.map('map').setView([-58.37723000, -34.61315000], 13);
@@ -144,7 +172,3 @@ modal.addEventListener("show.bs.modal", (e) => {
     //         .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     //         .openPopup();
     // }
-})
-
-
-    
