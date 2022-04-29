@@ -51,9 +51,29 @@ modal.addEventListener("show.bs.modal", (e) => {
     // let modalbody = modal.querySelector(".modal-body");
     
 
+
     if(arrayButton == "dataEntreprise") {
         const id = dataEntreprise.find(element => element.id == idButton)
         console.log(id);
+
+        let longitude = id.longitude;
+        let lattitude = id.lattitude;
+        var container = L.DomUtil.get('map');
+            if(container != null){
+                container._leaflet_id = null;
+            }
+    
+        setTimeout(function(){
+            map.invalidateSize();
+        }, 500);
+        
+        var map = L.map('map').setView([longitude, lattitude], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([lattitude, longitude]).addTo(map)
+            .bindPopup(id.nom)
+            .openPopup();
         
         // modaltitle.textContent = id.nom;
     }
@@ -61,40 +81,70 @@ modal.addEventListener("show.bs.modal", (e) => {
         else if (arrayButton == "dataPersonne") {
         const id = dataPersonne.find(element => element.id == idButton)
         console.log(id);
+
+        let longitude = id.ville_id;
+        let lattitude = id.ville_id;
+        var container = L.DomUtil.get('map');
+            if(container != null){
+                container._leaflet_id = null;
+            }
+    
+        setTimeout(function(){
+            map.invalidateSize();
+        }, 500);
+        
+        var map = L.map('map').setView([longitude, lattitude], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([lattitude, longitude]).addTo(map)
+            .bindPopup(id.nom)
+            .openPopup();
         // modaltitle.textContent = id.nom;
 
     } else {
         const id = dataVille.find(element => element.id == idButton)
         console.log(id);
 
-        if(id.nom == "Buenos Aires"){
-            setTimeout(function(){
-                map.invalidateSize();
-            }, 500);
-            
-            var map = L.map('map').setView([-34.61315000, -58.37723000], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        let longitude = id.longitude;
+        let lattitude = id.lattitude;
+        var container = L.DomUtil.get('map');
+            if(container != null){
+                container._leaflet_id = null;
+            }
+
+        setTimeout(function(){
+            map.invalidateSize();
+        }, 500);
+        
+        var map = L.map('map').setView([longitude, lattitude], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-            L.marker([-34.61315000, -58.37723000]).addTo(map)
-            .bindPopup('Buenos Aires')
+            L.marker([lattitude, longitude]).addTo(map)
+            .bindPopup(id.nom)
             .openPopup();
-        // modaltitle.textContent = id.nom;
+
+        // if(idButton == '3'){
+
+
+        // // modaltitle.textContent = id.nom;
+        // }
+        // else if(idButton == '2'){
+
+
+        //     L.marker([46.51965350, 6.63227340]).addTo(map)
+        //     .bindPopup('Lausanne')
+        //     .openPopup();
+        // // modaltitle.textContent = id.nom;
+        // }
+
+
+        
+        function effacer(){
+            map.off();;
         }
-        if(id.nom == "Lausanne"){
-            setTimeout(function(){
-                map1.invalidateSize();
-            }, 500);
-            
-            var map1 = L.map('map1').setView([46.51965350, 6.63227340], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map1);
-            L.marker([46.51965350, 6.63227340]).addTo(map1)
-            .bindPopup('Lausanne')
-            .openPopup();
-        // modaltitle.textContent = id.nom;
-        }
+
         
 
         // if(id == "3"){
