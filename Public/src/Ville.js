@@ -51,7 +51,7 @@ function CreateVille(value) {
     div1.className = "card-header text-center";
     
     let h2 = document.createElement("h2");
-    h2.className = "fw-bold text-decoration-underline";
+    h2.className = "fw-bold text-decoration-underline card-name";
     h2.innerHTML = value.nom;
     div1.appendChild(h2);
     div0.appendChild(div1);
