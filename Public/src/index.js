@@ -1,4 +1,4 @@
-import { CreateEntreprise, dataEntreprise, errorEntreprise} from "./Entreprise.js";
+import { CreateEntreprise, dataEntreprise, errorEntreprise} from "./Entreprise.js"
 import { CreatePersonne, dataPersonne, errorPersonne } from "./Personne.js";
 import { CreateVille, dataVille, errorVille } from "./Ville.js";
 
