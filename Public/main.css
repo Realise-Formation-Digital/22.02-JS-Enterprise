@@ -1,0 +1,12 @@
+*{
+    max-height: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#accueil {
+    font-size: 12rem;
+}
+img {
+color: blue;
+}
