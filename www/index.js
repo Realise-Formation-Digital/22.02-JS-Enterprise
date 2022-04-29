@@ -44,6 +44,7 @@ modal.addEventListener("show.bs.modal", (e) => {
     let idButton = buttons.getAttribute("data-bs-value");
     console.log(idButton);
 
+
     let arrayButton = buttons.getAttribute("data-bs-array");
     console.log(arrayButton);
 
@@ -51,13 +52,21 @@ modal.addEventListener("show.bs.modal", (e) => {
     // let modalbody = modal.querySelector(".modal-body");
     
 
+    var id1 = dataVille.find(element => element.id == idButton)
+        console.log(id1);
+
+
+        let longitude = id1.longitude;
+        let lattitude = id1.lattitude;
+
+        console.log(longitude);
+        console.log(lattitude);
 
     if(arrayButton == "dataEntreprise") {
-        const id = dataEntreprise.find(element => element.id == idButton)
+        var id = dataEntreprise.find(element => element.id == idButton)
+
         console.log(id);
 
-        let longitude = id.longitude;
-        let lattitude = id.lattitude;
         var container = L.DomUtil.get('map');
             if(container != null){
                 container._leaflet_id = null;
@@ -78,12 +87,13 @@ modal.addEventListener("show.bs.modal", (e) => {
         // modaltitle.textContent = id.nom;
     }
         
-        else if (arrayButton == "dataPersonne") {
-        const id = dataPersonne.find(element => element.id == idButton)
-        console.log(id);
+        else if (arrayButton == "dataPersonne" && id1.id == idButton) {
+            
+            
+            console.log(id1);
 
-        let longitude = id.ville_id;
-        let lattitude = id.ville_id;
+            console.log(idButton);
+            
         var container = L.DomUtil.get('map');
             if(container != null){
                 container._leaflet_id = null;
@@ -98,7 +108,7 @@ modal.addEventListener("show.bs.modal", (e) => {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
             L.marker([lattitude, longitude]).addTo(map)
-            .bindPopup(id.nom)
+            .bindPopup(id1.nom)
             .openPopup();
         // modaltitle.textContent = id.nom;
 
