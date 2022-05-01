@@ -25,32 +25,32 @@ const toast3 = new bootstrap.Toast(document.querySelector('#errorToast3'), {
 });
 
 //check les error et sinon boucle pour chaque entreprise, personne, ville et genere une card pour chaque avec les information
-if(errorEntreprise.data == undefined || errorEntreprise.data == null) {
-    toast.show();
-    textToast.innerHTML = "Error: " + errorEntreprise; 
-} else { 
+// if(errorEntreprise.data == undefined || errorEntreprise.data == null) {
+//     toast.show();
+//     textToast.innerHTML = "Error: " + errorEntreprise; 
+// } else { 
     for (let value of dataEntreprise){
         div1.appendChild(CreateEntreprise(value));
     }
-}
+// }
 
-if(errorVille.data == undefined || errorVille.data == null) {
-    toast2.show();
-    textToast2.innerHTML = "Error: " + errorVille; 
-} else { 
+// if(errorVille.data == undefined || errorVille.data == null) {
+//     toast2.show();
+//     textToast2.innerHTML = "Error: " + errorVille; 
+// } else { 
     for (let value of dataVille){
         div3.appendChild(CreateVille(value));
     }
-}
+// }
 
-if(errorPersonne.data == undefined || errorPersonne.data == null) {
-    toast3.show();
-    textToast3.innerHTML = "Error: " + errorPersonne; 
-} else { 
+// if(errorPersonne.data == undefined || errorPersonne.data == null) {
+//     toast3.show();
+//     textToast3.innerHTML = "Error: " + errorPersonne; 
+// } else { 
     for (let value of dataPersonne){
         div2.appendChild(CreatePersonne(value));
     }
-}
+// }
 
 //lien modal dans le html
 let modal = document.getElementById("modalButton");
