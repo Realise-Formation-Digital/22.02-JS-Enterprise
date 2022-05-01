@@ -98,6 +98,7 @@ modal.addEventListener("show.bs.modal", (e) => {
             .openPopup();
             }
         
+
         else if (arrayButton == "dataPersonne") {
             var id = dataPersonne.find(element => element.id == idButton)
             var id1 = dataVille.find(element => element.id == id.ville_id)

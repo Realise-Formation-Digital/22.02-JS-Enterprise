@@ -16,11 +16,11 @@
           return error.message;
       }
   }
+
 }
 
 //toutes les donnee de la requete
 const reponseAxios = await getVille();
-
 /**
 * 
 * @returns liste de villes, check le status 200
@@ -108,3 +108,4 @@ function CreateVille(value) {
 }
 
 export { CreateVille, dataVille, errorVille };
+
