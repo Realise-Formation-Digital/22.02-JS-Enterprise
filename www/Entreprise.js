@@ -4,15 +4,39 @@
  */
 async function getEntreprise() {
     try {
-      const response = await axios.get('https://entreprise.vinko-roditi.com/api/entreprise/list');
-      return response.data;
+        const response = await axios.get('https://entreprise.vinko-roditi.com/api/entreprise/list', { timeout: 60 });
+        return response;
     } catch (error) {
-      alert(error);
+        if (error.code === "ECONNABORTED") {
+            return error.message
+        } else if (error.dueToNoInternetConnection) {
+            return error = "No Connection";
+        } else {
+            return error.message;
+        }
     }
 }
 
-//array avec toutes les entreprise;
-const dataEntreprise = await getEntreprise();
+//toutes les donnee de la requete
+const reponseAxios = await getEntreprise();
+
+/**
+ * 
+ * @returns liste d'entreprise, check le status 200
+ */
+function check () {
+    if (reponseAxios.status == 200) {
+        const data = reponseAxios.data;
+        console.log(data)
+        return data;
+    }
+}
+
+//liste d'entreprise
+const dataEntreprise = check();
+
+//error de axios
+const errorEntreprise = reponseAxios;
 
 /**
  * 
@@ -73,4 +97,4 @@ function CreateEntreprise(value) {
     return div0;
 }
 
-export { CreateEntreprise, dataEntreprise };
+export { CreateEntreprise, dataEntreprise, errorEntreprise };

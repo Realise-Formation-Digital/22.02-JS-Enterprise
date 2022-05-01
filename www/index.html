@@ -28,10 +28,6 @@
         <h2 class="text-decoration-underline fw-bold">Ville</h2>
     </div>
     <div id="displayVille" class="row gap-1 mt-3 mb-3 justify-content-center"></div>
-    
-    <footer>
-        
-    </footer>
 
 
     <div class="modal fade" id="modalButton">
@@ -55,10 +51,44 @@
         </div>
     </div>
 
-    <!-- <div id="map">Bonjours</div> -->
     
-     <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    <div class="toast-container position-absolute top-0 end-0 p-3">
+        <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Axios Entreprise</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p class="text-danger fw-bold" id="textError"></p>
+            </div>
+        </div>
+    
+        <div id="errorToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Axios Ville</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+                <div class="toast-body">
+                <p class="text-danger fw-bold" id="textError2"></p>
+            </div>
+        </div>
+    
+        <div id="errorToast3" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Axios Personne</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p class="text-danger fw-bold" id="textError3"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="d-flex justify-content-center mb-3">
+        <a href="Ajouter.html"><button class="btn btn-success bnt-lg">Ajouter</button></a>
+    </footer>
+
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
