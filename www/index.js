@@ -51,26 +51,21 @@ modal.addEventListener("show.bs.modal", (e) => {
     // let modaltitle = modal.querySelector("#title");
     // let modalbody = modal.querySelector(".modal-body");
     
-
-    var id1 = dataVille.find(element => element.id == idButton)
-        console.log(id1);
-
-
-        let longitude = id1.longitude;
-        let lattitude = id1.lattitude;
-
-        console.log(longitude);
-        console.log(lattitude);
+    
+       
 
     if(arrayButton == "dataEntreprise") {
         var id = dataEntreprise.find(element => element.id == idButton)
+        var id1 = dataVille.find(element => element.id == idButton)
+        let longitude = id1.longitude;
+        let lattitude = id1.lattitude;
 
         console.log(id);
 
         var container = L.DomUtil.get('map');
             if(container != null){
                 container._leaflet_id = null;
-            }
+            } 
     
         setTimeout(function(){
             map.invalidateSize();
@@ -87,12 +82,12 @@ modal.addEventListener("show.bs.modal", (e) => {
         // modaltitle.textContent = id.nom;
     }
         
-        else if (arrayButton == "dataPersonne" && id1.id == idButton) {
+        else if (arrayButton == "dataPersonne") {
+            var id = dataPersonne.find(element => element.id == idButton)
+            var id1 = dataVille.find(element => element.id == id.ville_id)
+            let longitude = id1.longitude;
+            let lattitude = id1.lattitude;
             
-            
-            console.log(id1);
-
-            console.log(idButton);
             
         var container = L.DomUtil.get('map');
             if(container != null){
